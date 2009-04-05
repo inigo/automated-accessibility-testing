@@ -1,0 +1,7 @@
+automatedAccessibilityTesting is intended as an automated check for validity and accessibility
+of web pages that can be run as part of a continuous integration system. It takes a list of URLs,
+validates each using a local instance of the W3C validator, and checks their accessibility using
+Schematron rules. It is written in XProc, XSLT and Schematron. The current implementation uses
+Java, using Norm Walsh's "Calabash" XProc implementation, and Saxon for XSLT.
+
+Copyright April 2009. Inigo Surguy, 67 Bricks Ltd.

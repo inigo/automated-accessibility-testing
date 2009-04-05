@@ -1,0 +1,74 @@
+<!-- Start of Calabash output log for "report" to "file:/Users/inigosurguy/Subversion/brickscode/experiments/accessibility/automatedAccessibilityTesting/src/test/resources/xpl/validityreport.xml" at file:/Users/inigosurguy/Subversion/brickscode/experiments/accessibility/automatedAccessibilityTesting/src/test/resources/xpl/schematron.xpl:29 -->
+<!-- At FIXME: datetime -->
+<px:document-sequence xmlns:px='http://xmlcalabash.com/ns/document-sequence'>
+<px:document><svrl:schematron-output xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+                        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                        xmlns:sch="http://www.ascc.net/xml/schematron"
+                        title="Schema for Web Content Accessibility"
+                        schemaVersion="">
+   <svrl:active-pattern name="Tables"/>
+   <svrl:fired-rule context="table"/>
+   <svrl:failed-assert test="@summary" role="error" location="/html[1]/body[1]/div[1]/table[1]">
+      <svrl:text>A table must have a summary (layout tables should have an empty summary)</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="table"/>
+   <svrl:successful-report test="@summary and normalize-space(@summary)=''" role="warn"
+                           location="/html[1]/body[1]/div[1]/table[2]">
+      <svrl:text>Layout tables should be used as little as possible</svrl:text>
+   </svrl:successful-report>
+   <svrl:active-pattern name="Language"/>
+   <svrl:fired-rule context="html"/>
+   <svrl:active-pattern name="Images"/>
+   <svrl:fired-rule context="img"/>
+   <svrl:failed-assert test="@alt" location="/html[1]/body[1]/div[1]/img[1]">
+      <svrl:text>An img must have an alt attribute (decorative images should have an empty alt attribute)</svrl:text>
+   </svrl:failed-assert>
+   <svrl:active-pattern name="Forms"/>
+   <svrl:fired-rule context="input | textarea | select"/>
+   <svrl:fired-rule context="input | textarea | select"/>
+   <svrl:fired-rule context="input | textarea | select"/>
+   <svrl:failed-assert test="$explicitLabel or $implicitLabel"
+                       location="/html[1]/body[1]/div[1]/input[2]">
+      <svrl:text>Form elements must have a label</svrl:text>
+   </svrl:failed-assert>
+   <svrl:active-pattern name="Script"/>
+   <svrl:fired-rule context="a[@href]"/>
+   <svrl:fired-rule context="@onclick | @ondblclick | @onkeydown | @onkeyup | @onkeypress | @onmousedown | @onmousemove | @onmouseout | @onmouseover | @onmouseup"/>
+   <svrl:failed-assert test="false()" role="warn" location="/html[1]/body[1]/div[1]/span[1]/@schema">
+      <svrl:text>Avoid using JavaScript event handlers directly in HTML - prefer Unobtrusive JavaScript techniques</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="a[@href]"/>
+   <svrl:successful-report test="starts-with(@href, 'javascript:')"
+                           location="/html[1]/body[1]/div[1]/a[2]">
+      <svrl:text>Do not use javascript: URLs</svrl:text>
+   </svrl:successful-report>
+   <svrl:active-pattern name="Skip to content"/>
+   <svrl:fired-rule context="/"/>
+   <svrl:fired-rule context="//a[@accesskey='s']"/>
+   <svrl:failed-assert test="//a[@name=$skipLinkTarget or @id=$skipLinkTarget]"
+                       location="/html[1]/body[1]/a[1]">
+      <svrl:text>No target skippety found for "Skip to content" link</svrl:text>
+   </svrl:failed-assert>
+   <svrl:active-pattern name="Access keys"/>
+   <svrl:fired-rule context="/"/>
+   <svrl:failed-assert test="//a[@accesskey='1']" location="/html[1]">
+      <svrl:text>No 'Home' access key found with shortcut 1</svrl:text>
+   </svrl:failed-assert>
+   <svrl:failed-assert test="//a[@accesskey='0']" location="/html[1]">
+      <svrl:text>No 'Access key details' access key found with shortcut 0</svrl:text>
+   </svrl:failed-assert>
+   <svrl:active-pattern name="Page refresh"/>
+   <svrl:active-pattern name="Heading structure"/>
+   <svrl:fired-rule context="body"/>
+   <svrl:failed-assert test="$h[1]=1" role="warn" location="/html[1]/body[1]">
+      <svrl:text>h1 should be the first heading.</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="h2"/>
+   <svrl:fired-rule context="h1[not(preceding::h1)]"/>
+   <svrl:failed-assert test="not($h[$a + 1]-$h[$a] gt 1)" location="/html[1]/body[1]/div[1]/h1[1]">
+      <svrl:text>The first heading after h1 can not be h3. Only h2 is allowed.</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="h3"/>
+</svrl:schematron-output></px:document>

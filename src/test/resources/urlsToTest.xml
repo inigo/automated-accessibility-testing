@@ -1,0 +1,5 @@
+<requests xmlns:c="http://www.w3.org/ns/xproc-step">
+    <c:request href="http://surguy.net/" method="get"/>
+    <c:request href="http://tests.xproc.org/" method="get"/>
+    <c:request href="http://www.barcamp.org/BarCampApacheOxford" method="get"/>
+</requests>

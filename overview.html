@@ -1,0 +1,46 @@
+<body>
+<p>
+    automatedAccessibilityTesting is intended as an automated check for validity and accessibility
+    of web pages that can be run as part of a continuous integration system. It takes a list of URLs,
+    validates each using a local instance of the W3C validator, and checks their accessibility using
+    Schematron rules. It is written in XProc, XSLT and Schematron. The current implementation uses
+    Java, using Norm Walsh's "Calabash" XProc implementation, and Saxon for XSLT.
+</p>
+<h2>Building and running</h2>
+<p>
+    The application builds and installs with Maven. <code>mvn install</code> will produce an
+    <code>allInOneCalabash.jar</code> in the target directory, which can be launched via
+    java -jar. The libraries not available in a public Maven repo (Saxon and Calabash) are
+    built into the JAR from the lib directory.
+</p>
+<p>
+    The main XProc file is runTests.xpl.
+</p>
+<p>
+    To run from IDEA, set up an IDEA run configuration with a main class of <code>com.xmlcalabash.drivers.Main</code>
+    and program parameters of <code>-U com.sixtysevenbricks.xml.ClasspathUriResolver -i 
+    source=file:src/test/resources/urlsToTest.xml src/main/resources/xpl/runTests.xpl</code>.
+</p>
+<p>
+    To run from the command line, run: <br/>
+    <code>java -jar allInOneCalabash.jar -Ucom.sixtysevenbricks.xml.ClasspathUriResolver
+        -i source=file:test-classes/urlsToTest.xml classpath:///xpl/runTests.xpl</code>
+</p>
+<p>
+    (or copy testPages.sh to the target directory, and run it.
+</p>
+<h2>Set-up of W3C validator</h2>
+<p>
+    The W3C validator is a separate application that needs to run as a web page. The easiest way is to
+    download the <a href="http://habilis.net/validator-sac/">OS X Validator S.A.C.</a> and follow the
+    instructions to set it up within Apache. The W3C validator is also available as a
+    <a href="http://validator.w3.org/source/">packages and source code for Linux</a>. It isn't
+    available for Windows.
+</p>
+<p>
+    Having set up the validator, make sure the validatorUrl option is correctly set (used in
+    runTests.xpl) to point to it. If the validator is updated, then it may be necessary to change
+    the forms that are being posted to it (from runTests.xpl) and the formatting of its results
+    (in formatValidationReport.xsl).
+</p>
+</body>

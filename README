@@ -5,3 +5,9 @@ Schematron rules. It is written in XProc, XSLT and Schematron. The current imple
 Java, using Norm Walsh's "Calabash" XProc implementation, and Saxon for XSLT.
 
 Copyright April 2009. Inigo Surguy, 67 Bricks Ltd.
+
+automatedAccessibilityTesting is available under the terms of the GNU General Public License v2 -
+see LICENCE.txt.
+
+I'm sympathetic to re-licensing it under the LGPL, but it currently depends on XProc which
+is GPL-licensed.
